@@ -8,4 +8,9 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="TransparencySection"
+    meta_type="Factory-based Type Information with dynamic views" />
+  <object name="OpenDataFolder"
+    meta_type="Factory-based Type Information with dynamic views" />
 </object>
+

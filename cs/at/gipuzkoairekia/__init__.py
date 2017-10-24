@@ -2,7 +2,7 @@
 """
 
 from zope.i18nmessageid import MessageFactory
-from cs.gipuzkoairekia import config
+from cs.at.gipuzkoairekia import config
 
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
@@ -11,7 +11,7 @@ from Products.CMFCore import utils
 # This will be imported with the special name "_" in most modules. Strings
 # like _(u"message") will then be extracted by i18n tools for translation.
 
-gipuzkoairekiaMessageFactory = MessageFactory('cs.gipuzkoairekia')
+_ = MessageFactory('cs.at.gipuzkoairekia')
 
 
 def initialize(context):

@@ -20,11 +20,6 @@ long_description = (
     + '\n' +
     read('CHANGES.txt')
     + '\n' +
-    'Detailed Documentation\n'
-    '**********************\n'
-    + '\n' +
-    read('cs', 'gipuzkoairekia', 'README.txt')
-    + '\n' +
     'Contributors\n'
     '************\n'
     + '\n' +
@@ -55,7 +50,7 @@ setup(
     url='https://github.com/codesyntax/cs.at.gipuzkoairekia',
     license='GPL',
     packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['cs', 'at'],
+    namespace_packages=['cs', 'cs.at'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
@@ -64,6 +59,7 @@ setup(
         'Plone <= 4.99',
         'Products.Archetypes',
         'archetypes.schemaextender',
+        'five.globalrequest',
     ],
     extras_require={
         'test': [

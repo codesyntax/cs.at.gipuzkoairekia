@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <!-- -*- extra stuff goes here -*- -->
+    <permission name="cs.at.gipuzkoairekia: Add TransparencySection" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+      <role name="Site Administrator" />
+    </permission>
+    <permission name="cs.at.gipuzkoairekia: Add OpenDataFolder" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+      <role name="Site Administrator" />
+    </permission>
+
+  </permissions>
+</rolemap>

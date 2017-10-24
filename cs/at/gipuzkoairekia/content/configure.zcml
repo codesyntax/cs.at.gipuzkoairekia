@@ -4,7 +4,20 @@
     i18n_domain="cs.gipuzkoairekia">
 
   <!-- configure your content components here -->
-  
+
   <!-- -*- extra stuff goes here -*- -->
+  <class class=".transparencysection.TransparencySection">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.ITransparencySection"
+        />
+  </class>
+  <class class=".opendatafolder.OpenDataFolder">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IOpenDataFolder"
+        />
+  </class>
+
 
 </configure>

@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="${namespace_package}.${package}">
+
+
+  <!-- -*- extra stuff goes here -*- -->
+  <permission
+    id="cs.at.gipuzkoairekia.AddTransparencySection"
+    title="cs.at.gipuzkoairekia: Add TransparencySection"
+  />
+
+
+  <permission
+    id="cs.at.gipuzkoairekia.AddOpenDataFolder"
+    title="cs.at.gipuzkoairekia: Add OpenDataFolder"
+  />
+
+</configure>
