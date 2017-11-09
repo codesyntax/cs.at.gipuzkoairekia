@@ -60,6 +60,8 @@ setup(
         'Products.Archetypes',
         'archetypes.schemaextender',
         'five.globalrequest',
+        'requests',
+        'xmljson',
     ],
     extras_require={
         'test': [
