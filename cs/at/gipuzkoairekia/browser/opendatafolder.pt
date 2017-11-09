@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="cs.at.gipuzkoairekia">
+<head></head>
+<body>
+
+<metal:title fill-slot="content-title">
+
+  <h1 class="documentFirstHeading">
+    <span tal:condition="view/is_subpath" tal:replace="view/subpath_title">
+
+    </span>
+
+    <span tal:condition="not:view/is_subpath" tal:replace="context/Title">
+
+    </span>
+
+  </h1>
+
+</metal:title>
+
+<metal:description fill-slot="content-description">
+
+  <p class="documentDescription">
+    <span tal:condition="view/is_subpath" tal:replace="view/subpath_description">
+
+    </span>
+
+    <span tal:condition="not:view/is_subpath" tal:replace="context/Description">
+
+    </span>
+
+  </p>
+
+
+</metal:description>
+
+
+<metal:main fill-slot="content-core">
+
+  <div id="data-contents" tal:condition="view/is_subpath">
+
+    <tal:data define="data view/dataset_data" condition="data">
+
+      <div class="resources" tal:condition="data/recursos|nothing">
+        <h2 i18n:translate="heading_downloads">
+          Files
+        </h2>
+
+        <ul tal:define="recursos data/recursos">
+          <li tal:repeat="recurso recursos/recurso">
+            <a href="" tal:content="recurso/name" tal:attributes="href recurso/url">
+              Recurso
+            </a>
+            <br/>
+            <span class="resource-description" tal:content="recurso/description" />
+          </li>
+        </ul>
+      </div>
+
+    </tal:data>
+  </div>
+
+  <div id="data-list" tal:condition="not:view/is_subpath">
+
+    <div class="data-item" tal:repeat="dataset view/datasets">
+
+      <h2>
+        <a href="" tal:attributes="href string:${request/ACTUAL_URL}/view/${dataset/id}"
+          tal:content="dataset/title">
+          Eibarko Udalean jasotako fakturek
+        </a>
+      </h2>
+
+      <p class="publication-data"
+        tal:content="dataset/fechaModificacion">
+        2017/07/07
+      </p>
+
+      <p class="dataset-description"
+        tal:content="dataset/description">
+        Here goes the description
+      </p>
+
+    </div>
+  </div>
+
+
+
+</metal:main>
+
+</body>
+</html>
