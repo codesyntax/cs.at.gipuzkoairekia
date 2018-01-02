@@ -44,7 +44,7 @@ def _render_dataset_id(method, self, datasetid):
     return (datasetid, time.time() // 3600)
 
 def _render_organization_id(method, self):
-    return (self.get_organization_id(), time.time() // 3600)
+    return (self.get_organization_id(), self.get_category_id(), time.time() // 3600)
 
 
 @implementer(IPublishTraverse)
