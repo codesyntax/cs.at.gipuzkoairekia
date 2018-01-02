@@ -38,6 +38,16 @@ TransparencySectionSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
     ),
 
+    atapi.StringField(
+        'category_id',
+        languageIndependent=True,
+        required=True,
+        widget=atapi.StringWidget(
+            label=_(u'Category id'),
+            description=_(u'Enter the transparency portal category id to be linked here'),
+        )
+    )
+
 ))
 
 # Set storage on fields copied from ATContentTypeSchema, making sure

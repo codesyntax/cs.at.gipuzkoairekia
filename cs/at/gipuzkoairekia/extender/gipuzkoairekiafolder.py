@@ -35,7 +35,14 @@ class GipuzkoaIrekiaFolderExtender(object):
         MyStringField(
             'institution_code',
             widget=atapi.StringWidget(
-                label=_(u'Institution code'),
+                label=_(u'Institution code (Open-data portal)'),
+                description=_(u'Enter here the code of the institution'),
+            )
+        ),
+        MyStringField(
+            'group_id',
+            widget=atapi.StringWidget(
+                label=_(u'Institution code (Transpareceny portal)'),
                 description=_(u'Enter here the code of the institution'),
             )
         ),
@@ -52,6 +59,8 @@ class GipuzkoaIrekiaFolderExtender(object):
                 description=_(u'Select the language in which the contents will be shown'),
             )
         ),
+
+
 
     ]
 
