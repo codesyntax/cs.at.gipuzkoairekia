@@ -26,6 +26,16 @@
     permission="zope2.View"
   />
 
+  <browser:page
+    for="Products.CMFCore.interfaces.IContentish"
+    name="transparency-view"
+    class=".transparency.TransparencyView"
+    template="transparency.pt"
+    permission="zope2.View"
+  />
+
+
+
 
   <browser:page
     for="..interfaces.IGipuzkoaIrekiaFolder"
