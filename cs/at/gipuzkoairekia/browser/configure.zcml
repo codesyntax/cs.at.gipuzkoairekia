@@ -21,5 +21,14 @@
   />
 
 
+  <browser:page
+    for="..interfaces.IGipuzkoaIrekiaFolder"
+    name="transparency-section-list"
+    class=".transparencysectionlist.TransparencySectionListView"
+    template="transparencysectionlist.pt"
+    permission="cmf.ModifyPortalContent"
+  />
+
+
 
 </configure>

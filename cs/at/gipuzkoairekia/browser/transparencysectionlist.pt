@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="cs.at.gipuzkoairekia">
+<head></head>
+<body>
+
+<metal:title fill-slot="content-title">
+
+  <h1 class="documentFirstHeading" i18n:translate="">
+    Check here the full list of sections available at Transparency Portal
+  </h1>
+
+</metal:title>
+
+<metal:description fill-slot="content-description">
+
+  <p class="documentDescription">
+
+  </p>
+
+
+</metal:description>
+
+
+<metal:main fill-slot="content-core">
+
+  <table class="listing">
+    <thead>
+      <tr>
+        <th i18n:translate="">Category id</th>
+        <th i18n:translate="">Category name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr tal:repeat="item view/item_list">
+        <td tal:content="item/id"></td>
+        <td tal:content="item/title"></td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</metal:main>
+
+</body>
+</html>
