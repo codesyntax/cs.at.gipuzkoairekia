@@ -4,7 +4,28 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="cs.at.gipuzkoairekia">
-<head></head>
+<head>
+
+  <metal:js fill-slot="javascript_head_slot">
+    <script type="text/javascript" src=""
+      tal:attributes="src string:${here/absolute_url}/++resource++cs.at.gipuzkoairekia/moment-with-locales.min.js">
+    </script>
+
+    <script type="text/javascript" tal:content="structure string:
+      $$(document).ready(function(){
+        moment.locale('${context/Language}');
+        $$('.publication-date').each(function(item){
+          var value = $$(this).data('date');
+          $$(this).html(moment(value).format('L LT'));
+        });
+      });">
+    </script>
+
+
+  </metal:js>
+
+
+</head>
 <body>
 
 <metal:title fill-slot="content-title">
@@ -65,7 +86,8 @@
         </a>
       </h2>
 
-      <p class="publication-data"
+      <p class="publication-date"
+        tal:attributes="data-date dataset/modified"
         tal:content="dataset/modified">
         2017/07/07
       </p>
