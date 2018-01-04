@@ -193,7 +193,7 @@ class TransparencySectionView(BrowserView):
             for value in values:
                 lang_value = value.get('language-id', None)
                 if lang_value == LANG_VALUE.get(language) and value.text:
-                    response += ' '
+                    response += '<br/>'
                     response += self.transform_value(value.text)
 
             return response
