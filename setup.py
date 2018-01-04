@@ -15,18 +15,8 @@ version = '1.0'
 long_description = (
     read('README.rst')
     + '\n' +
-    'Change history\n'
-    '**************\n'
-    + '\n' +
     read('CHANGES.txt')
-    + '\n' +
-    'Contributors\n'
-    '************\n'
-    + '\n' +
-    read('CONTRIBUTORS.txt')
-    + '\n' +
-    'Download\n'
-    '********\n')
+    + '\n' )
 
 setup(
     name='cs.at.gipuzkoairekia',

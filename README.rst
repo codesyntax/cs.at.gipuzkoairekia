@@ -1,17 +1,7 @@
-.. contents::
+Introduction
+============
 
-.. Note!
-   -----
-   Update the following URLs to point to your:
+This products adds the ability to mirror the contents of GipuzkoaIrekia_ portal
+in a Plone site.
 
-   - code repository
-   - bug tracker
-   - questions/comments feedback mail
-   (do not set a real mail, to avoid spams)
-
-   Or remove it if not used.
-
-- Code repository: http://svn.somewhere.com/...
-- Questions and comments to somemailing_list
-- Report bugs at http://bug.somewhere.com/..
-
+.. _GipuzkoaIrekia: http://www.gipuzkoairekia.eus/es
