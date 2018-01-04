@@ -6,7 +6,7 @@ import doctest
 
 from Testing import ZopeTestCase as ztc
 
-from cs.gipuzkoairekia.tests import base
+from cs.at.gipuzkoairekia.tests import base
 
 
 def test_suite():
