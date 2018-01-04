@@ -68,7 +68,7 @@ class TransparencySectionView(BrowserView):
 
     def subpath_title(self):
         data = self.dataset_data_big()
-        return data.get('title', '')
+        return data.get('newtitle', '')
 
     def subpath_description(self):
         data = self.dataset_data_big()
@@ -152,7 +152,7 @@ class TransparencySectionView(BrowserView):
 
     def decorate_dataset(self, item):
         language = self.get_language()
-        item['title'] = self.parse_title(item.get('title'), language)
+        item['newtitle'] = self.parse_title(item.get('title'), language)
         item['description'] = self.parse_description(item.get('content'), language)
         item['text'] = self.parse_content(item.get('content'), language)
         item['modified'] = self.convert_date(item.get('modifiedDate'))
