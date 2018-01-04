@@ -16,7 +16,7 @@
                 <span tal:content="section/Title">Section name</span>
                 <span class="icon" tal:define="section_obj section/getObject">
                   <img tal:define="scales section_obj/@@images;
-                                   scale python: scales.tag('image')"
+                                   scale python: scales.tag('image', scale='mini')"
                        tal:replace="structure scale"
                        tal:on-error="nothing"
                        />
