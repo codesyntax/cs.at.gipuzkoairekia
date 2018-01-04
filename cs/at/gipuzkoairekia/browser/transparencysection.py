@@ -208,9 +208,11 @@ class TransparencySectionView(BrowserView):
         return value
 
 
-    def convert_date(self, unixtime):
+    def convert_date(self, unixtimemiliseconds):
         try:
-            date = datetime.datetime.utcfromtimestamp(int(unixtime))
+            value = int(unixtimemiliseconds)
+            unixtime = value / 1000
+            date = datetime.datetime.utcfromtimestamp(unixtime)
             return date.isoformat()
         except:
             now = datetime.datetime.now()
