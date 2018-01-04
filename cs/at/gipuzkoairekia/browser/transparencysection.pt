@@ -81,7 +81,7 @@
 
       <h2>
         <a href="" tal:attributes="href string:${request/ACTUAL_URL}/view/${dataset/articleId}"
-          tal:content="dataset/title">
+          tal:content="dataset/newtitle">
           Eibarko Udalean jasotako fakturek
         </a>
       </h2>
