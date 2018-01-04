@@ -21,7 +21,6 @@ TransparencySectionSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     # -*- Your Archetypes field definitions here ... -*-
     ImageField(
         'image',
-        languageIndependent=True,
         required=False,
         sizes={
             'large'   : (768, 768),
