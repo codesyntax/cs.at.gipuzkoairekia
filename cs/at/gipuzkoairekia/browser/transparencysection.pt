@@ -45,7 +45,8 @@
 
 <metal:description fill-slot="content-description">
 
-  <div id="info-table" tal:define="data view/dataset_data_big" tal:condition="view/is_subpath">
+  <div id="info-table" tal:condition="view/is_subpath">
+  <tal:block tal:define="data view/dataset_data_big">
     <div class="inner-img">
       <!-- category image -->
       <img tal:define="scales context/@@images;
@@ -61,6 +62,7 @@
       <dt i18n:translate="">Subject:</dt><dd tal:content="context/Title">Ekonomia, Finantzak, Aurrekontuak eta Estatistikak</dd>
       <dt i18n:translate="">Organization:</dt><dd>Eibarko Udala</dd>
     </dl>
+    </tal:block>
   </div>
 
 

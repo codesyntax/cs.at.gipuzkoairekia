@@ -86,7 +86,6 @@
             <a href="" tal:content="recurso/name" tal:attributes="href recurso/url">
               Recurso
             </a>
-            <br/>
             <span class="resource-description" tal:content="recurso/description" />
           </li>
         </ul>
