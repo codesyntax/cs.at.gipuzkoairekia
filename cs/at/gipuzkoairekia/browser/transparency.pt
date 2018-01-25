@@ -6,23 +6,24 @@
     <metal:desc fill-slot="content-description" />
 
     <metal:content fill-slot="content-core">
-
-      <div class="col-md-3 col-sm-3" tal:repeat="section view/sections">
-        <div class="section">
-          <div class="section-inner">
-            <h2>
-              <a href=""
-                tal:attributes="href section/getURL">
-                <span tal:content="section/Title">Section name</span>
-                <span class="icon" tal:define="section_obj section/getObject">
-                  <img tal:define="scales section_obj/@@images;
-                                   scale python: scales.tag('image', scale='mini')"
-                       tal:replace="structure scale"
-                       tal:on-error="nothing"
-                       />
-                </span>
-              </a>
-            </h2>
+      <div class="row">
+        <div class="col-md-3 col-sm-3" tal:repeat="section view/sections">
+          <div class="section">
+            <div class="section-inner">
+              <h2>
+                <a href=""
+                  tal:attributes="href section/getURL">
+                  <span tal:content="section/Title">Section name</span>
+                  <span class="icon" tal:define="section_obj section/getObject">
+                    <img tal:define="scales section_obj/@@images;
+                                    scale python: scales.tag('image', scale='mini')"
+                        tal:replace="structure scale"
+                        tal:on-error="nothing"
+                        />
+                  </span>
+                </a>
+              </h2>
+            </div>
           </div>
         </div>
       </div>
