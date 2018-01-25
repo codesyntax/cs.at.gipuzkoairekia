@@ -16,7 +16,7 @@
         moment.locale('${context/Language}');
         $$('.publication-date').each(function(item){
           var value = $$(this).data('date');
-          $$(this).html(moment(value).format('L LT'));
+          $$(this).html(moment(value).format('L'));
         });
       });">
     </script>
