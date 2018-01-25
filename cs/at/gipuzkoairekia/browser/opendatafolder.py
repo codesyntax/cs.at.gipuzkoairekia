@@ -17,6 +17,7 @@ import requests
 BASE_URL_SEARCH = 'http://api.gipuzkoairekia.eus/dataset/buscar?org={0}&numRes=9999'
 BASE_URL_DATASET = 'http://api.gipuzkoairekia.eus/dataset/{0}'
 
+CATEGORY_SEARCH_URL = 'http://api.gipuzkoairekia.eus//categoria/lista'
 
 LANG_SUFFIX = {
     'es': '',
@@ -74,6 +75,24 @@ class OpenDataFolderView(BrowserView):
             return context.getField('institution_code').get(context)
         else:
             return None
+
+    @cache(_render_organization_id)
+    def category_data(self):
+        try:
+            data = requests.get(CATEGORY_SEARCH_URL, timeout=10)
+            return bf.data(fromstring(data.content))
+        except:
+            return {'error': True}
+
+    def get_category(self, id):
+        language = self.get_language()
+        categories = self.category_data()
+        items = categories.get('resultado', {}).get('categorias', {}).get('categoria', [])
+        new_data = {}
+        for item in items:
+            new_data[item.get('id')] = item.get(TITLE_KEY + LANG_SUFFIX.get(language))
+
+        return new_data.get(id, '')
 
 
     @cache(_render_organization_id)
