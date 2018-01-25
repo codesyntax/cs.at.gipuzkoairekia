@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-01-25 09:42+0000\n"
+"PO-Revision-Date: 2018-01-25 10:45+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: \n"
+"Language: eu\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: configure.zcml:24
+msgid "An add-on for Plone to expose the contents of Gipuzkoa Irekia, an open government platform"
+msgstr "Gipuzkoa Irekiako edukiak Plonen erakusteko produktua"
+
+#: browser/transparencysectionlist.pt:33 content/transparencysection.py:45
+msgid "Category id"
+msgstr "Kategoriaren id-a"
+
+#: browser/transparencysectionlist.pt:34
+msgid "Category name"
+msgstr "Kategoriaren izena"
+
+#: browser/transparencysectionlist.pt:12
+msgid "Check here the full list of sections available at Transparency Portal"
+msgstr "Ikusi hemen Gardentasun Atarian dauden atal guztiak"
+
+#: profiles/default/types/OpenDataFolder.xml
+msgid "Content-type for opendatafolder"
+msgstr "OpenData edukien elementu-mota"
+
+#: profiles/default/types/TransparencySection.xml
+msgid "Content-type for sections"
+msgstr "Gardentasun atalen elementu-mota"
+
+#: browser/opendatafolder.pt:51 browser/transparencysection.pt:60
+msgid "Creation date:"
+msgstr "Sorrera data:"
+
+#: extender/gipuzkoairekiafolder.py:54
+msgid "English"
+msgstr "Ingelesa"
+
+#: extender/gipuzkoairekiafolder.py:39
+msgid "Enter here the code of the institution"
+msgstr "Erakundearen kodea idatzi"
+
+#: content/transparencysection.py:46
+msgid "Enter the transparency portal category id to be linked here"
+msgstr "Elementu honi dagokion gardentasun atariko kategoria idatzi"
+
+#: extender/gipuzkoairekiafolder.py:53
+msgid "Espanol"
+msgstr "Español"
+
+#: extender/gipuzkoairekiafolder.py:52
+msgid "Euskara"
+msgstr "Euskara"
+
+#: configure.zcml:24
+msgid "Gipuzkoa Irekia"
+msgstr "Gipuzkoa Irekia"
+
+#: extender/gipuzkoairekiafolder.py:38
+msgid "Institution code (Open-data portal)"
+msgstr "Erakundearen kodea (Datu Irekien ataria)"
+
+#: extender/gipuzkoairekiafolder.py:45
+msgid "Institution code (Transpareceny portal)"
+msgstr "Erakundearen kodea (Gardentasun ataria)"
+
+#: extender/gipuzkoairekiafolder.py:58
+msgid "Language"
+msgstr "Hizkuntza"
+
+#: content/transparencysection.py:35
+msgid "Logo"
+msgstr "Logoa"
+
+#: browser/opendatafolder.pt:50 browser/transparencysection.pt:59
+msgid "Modification date:"
+msgstr "Aldaketa data:"
+
+#: profiles/default/types/OpenDataFolder.xml
+msgid "OpenDataFolder"
+msgstr "Datu Irekien Katalogoa"
+
+#: browser/opendatafolder.pt:53 browser/transparencysection.pt:62
+msgid "Organization:"
+msgstr "Erakundea"
+
+#: extender/gipuzkoairekiafolder.py:59
+msgid "Select the language in which the contents will be shown"
+msgstr "Hizkuntza aukeratu"
+
+#: browser/opendatafolder.pt:52 browser/transparencysection.pt:61
+msgid "Subject:"
+msgstr "Gaia"
+
+#: profiles/default/types/TransparencySection.xml
+msgid "TransparencySection"
+msgstr "Gardentasun Atala"
+
+#. Default: "Files"
+#: browser/opendatafolder.pt:80
+msgid "heading_downloads"
+msgstr "Fitxategiak"

@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-01-25 09:42+0000\n"
+"PO-Revision-Date: 2018-01-25 10:47+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: configure.zcml:24
+msgid "An add-on for Plone to expose the contents of Gipuzkoa Irekia, an open government platform"
+msgstr "Producto para mostrar los contenidos de Gipuzkoa Irekia en Ploen"
+
+#: browser/transparencysectionlist.pt:33 content/transparencysection.py:45
+msgid "Category id"
+msgstr "ID de categoría"
+
+#: browser/transparencysectionlist.pt:34
+msgid "Category name"
+msgstr "Nombre de la categoría"
+
+#: browser/transparencysectionlist.pt:12
+msgid "Check here the full list of sections available at Transparency Portal"
+msgstr "Vea aquí el listado completo de apartados del portal de transparencia"
+
+#: profiles/default/types/OpenDataFolder.xml
+msgid "Content-type for opendatafolder"
+msgstr "Tipo de elemento para el catálogo de datos abiertos"
+
+#: profiles/default/types/TransparencySection.xml
+msgid "Content-type for sections"
+msgstr "Tipo de elemento para las secciones del portal de transparencia"
+
+#: browser/opendatafolder.pt:51 browser/transparencysection.pt:60
+msgid "Creation date:"
+msgstr "Fecha de creación:"
+
+#: extender/gipuzkoairekiafolder.py:54
+msgid "English"
+msgstr "Inglés"
+
+#: extender/gipuzkoairekiafolder.py:39
+msgid "Enter here the code of the institution"
+msgstr "Introduzca aquí el código de la institución"
+
+#: content/transparencysection.py:46
+msgid "Enter the transparency portal category id to be linked here"
+msgstr "Introduzca aquí el código de este apartado del portal de transparencia"
+
+#: extender/gipuzkoairekiafolder.py:53
+msgid "Espanol"
+msgstr "Español"
+
+#: extender/gipuzkoairekiafolder.py:52
+msgid "Euskara"
+msgstr "Euskara"
+
+#: configure.zcml:24
+msgid "Gipuzkoa Irekia"
+msgstr "Gipuzkoa Irekia"
+
+#: extender/gipuzkoairekiafolder.py:38
+msgid "Institution code (Open-data portal)"
+msgstr "Código de la institución (Portal Datos Abiertos)"
+
+#: extender/gipuzkoairekiafolder.py:45
+msgid "Institution code (Transpareceny portal)"
+msgstr "Código de la institución (Portal de Transparencia"
+
+#: extender/gipuzkoairekiafolder.py:58
+msgid "Language"
+msgstr "Idioma"
+
+#: content/transparencysection.py:35
+msgid "Logo"
+msgstr "Logo"
+
+#: browser/opendatafolder.pt:50 browser/transparencysection.pt:59
+msgid "Modification date:"
+msgstr "Fecha de modificación:"
+
+#: profiles/default/types/OpenDataFolder.xml
+msgid "OpenDataFolder"
+msgstr "Catálogo de datos abiertos"
+
+#: browser/opendatafolder.pt:53 browser/transparencysection.pt:62
+msgid "Organization:"
+msgstr "Organización:"
+
+#: extender/gipuzkoairekiafolder.py:59
+msgid "Select the language in which the contents will be shown"
+msgstr "Seleccione el idioma"
+
+#: browser/opendatafolder.pt:52 browser/transparencysection.pt:61
+msgid "Subject:"
+msgstr "Tema:"
+
+#: profiles/default/types/TransparencySection.xml
+msgid "TransparencySection"
+msgstr "Apartado del portal de transparencia"
+
+#. Default: "Files"
+#: browser/opendatafolder.pt:80
+msgid "heading_downloads"
+msgstr "Archivos"

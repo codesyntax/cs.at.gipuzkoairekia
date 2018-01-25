@@ -6,6 +6,7 @@
     i18n_domain="cs.at.gipuzkoairekia">
 
   <includeDependencies package="." />
+  <i18n:registerTranslations directory="locales" />
   <five:registerPackage package="." initialize=".initialize" />
 
   <!-- Include the sub-packages that use their own configure.zcml files. -->
