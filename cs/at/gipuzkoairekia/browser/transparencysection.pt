@@ -14,7 +14,7 @@
     <script type="text/javascript" tal:content="structure string:
       $$(document).ready(function(){
         moment.locale('${context/Language}');
-        $$('.publication-date').each(function(item){
+        $$('.moment-date').each(function(item){
           var value = $$(this).data('date');
           $$(this).html(moment(value).format('L'));
         });
@@ -45,7 +45,27 @@
 
 <metal:description fill-slot="content-description">
 
+  <div id="info-table" tal:define="data view/dataset_data_big" tal:condition="view/is_subpath">
+    <div class="inner-img">
+      <!-- category image -->
+      <img tal:define="scales context/@@images;
+                       scale python: scales.tag('image', scale='mini')"
+        tal:replace="structure scale"
+        tal:on-error="nothing"
+        src="http://eibar.gipuzkoairekia.eus/DOGAccesoTerceros-theme/images/transparencie/economia.png"
+        tal:attributes="alt context/Title">
+    </div>
+    <dl>
+      <dt i18n:translate="">Modification date:</dt> <dd class="moment-date" tal:attributes="data-date data/modified" tal:content="data/modified">2018-01-03</dd>
+      <dt i18n:translate="">Creation date:</dt> <dd class="moment-date" tal:attributes="data-date data/created" tal:content="data/created">2016-01-04</dd>
+      <dt i18n:translate="">Subject:</dt><dd tal:content="context/Title">Ekonomia, Finantzak, Aurrekontuak eta Estatistikak</dd>
+      <dt i18n:translate="">Organization:</dt><dd>Eibarko Udala</dd>
+    </dl>
+  </div>
+
+
   <p class="documentDescription">
+
     <span tal:condition="view/is_subpath" tal:replace="view/subpath_description">
 
     </span>
@@ -86,7 +106,7 @@
         </a>
       </h2>
 
-      <p class="publication-date"
+      <p class="publication-date moment-date"
         tal:attributes="data-date dataset/modified"
         tal:content="dataset/modified">
         2017/07/07
