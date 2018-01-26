@@ -70,4 +70,7 @@ class TransparencySection(base.ATCTContent):
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
 
+    def image_url(self):
+        return self.restrictedTraverse('@@images').scale('image', scale='mini')
+
 atapi.registerType(TransparencySection, PROJECTNAME)

@@ -1,6 +1,7 @@
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
+from itertools import izip
 from lxml import etree
 from plone.memoize.ram import cache
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -184,26 +185,31 @@ class TransparencySectionView(BrowserView):
             return content
 
     def parse_content(self, content, language):
+        def pairwise(iterable):
+            "s -> (s0, s1), (s2, s3), (s4, s5), ..."
+            a = iter(iterable)
+            return izip(a, a)
+
         try:
-            response = u''
+            response = []
+            html_response = ''
             root = etree.fromstring(safe_unicode(content).encode('utf-8'))
             values = root.xpath("/root/dynamic-element[@name='descripcion-dato-transparencia']//dynamic-content")
             for value in values:
                 lang_value = value.get('language-id', None)
                 if lang_value == LANG_VALUE.get(language) and value.text:
-                    response += '<br/>'
-                    response += self.transform_value(value.text)
+                    response.append(value.text)
 
-            return response
+            html_response = '<ul>'
+            for first, second in pairwise(response):
+                html_response += '<li>'
+                html_response += '<a href="{}">{}</a>'.format(second, first)
+                html_response += '</li>'
+
+            html_response += '</ul>'
+            return html_response
         except:
             return content
-
-
-    def transform_value(self, value):
-        if value.startswith('http'):
-            return u'<a href="{}">{}</a>'.format(value, value)
-
-        return value
 
 
     def convert_date(self, unixtimemiliseconds):

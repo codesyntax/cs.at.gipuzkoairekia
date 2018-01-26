@@ -49,12 +49,8 @@
   <tal:block tal:define="data view/dataset_data_big">
     <div class="inner-img">
       <!-- category image -->
-      <img tal:define="scales context/@@images;
-                       scale python: scales.tag('image', scale='mini')"
-        tal:replace="structure scale"
-        tal:on-error="nothing"
-        src="http://eibar.gipuzkoairekia.eus/DOGAccesoTerceros-theme/images/transparencie/economia.png"
-        tal:attributes="alt context/Title">
+      <img tal:replace="structure context/image_url"
+        src="http://eibar.gipuzkoairekia.eus/DOGAccesoTerceros-theme/images/transparencie/economia.png" />
     </div>
     <dl>
       <dt i18n:translate="">Modification date:</dt> <dd class="moment-date" tal:attributes="data-date data/modified" tal:content="data/modified">2018-01-03</dd>
