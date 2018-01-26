@@ -1,12 +1,11 @@
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
+from lxml import etree
 from plone.memoize.ram import cache
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from xml.etree.ElementTree import fromstring
-from xmljson import yahoo as bf
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
 
@@ -79,18 +78,19 @@ class OpenDataFolderView(BrowserView):
     @cache(_render_organization_id)
     def category_data(self):
         try:
-            data = requests.get(CATEGORY_SEARCH_URL, timeout=10)
-            return bf.data(fromstring(data.content))
+            return etree.parse(CATEGORY_SEARCH_URL).getroot()
         except:
             return {'error': True}
 
     def get_category(self, id):
         language = self.get_language()
         categories = self.category_data()
-        items = categories.get('resultado', {}).get('categorias', {}).get('categoria', [])
+        items = categories.xpath('//categoria')
         new_data = {}
         for item in items:
-            new_data[item.get('id')] = item.get(TITLE_KEY + LANG_SUFFIX.get(language))
+            category_id = item.xpath('id')[0].text
+            category_title = item.xpath('{}'.format(TITLE_KEY + LANG_SUFFIX.get(language)))[0].text
+            new_data[category_id] = category_title
 
         return new_data.get(id, '')
 
@@ -100,8 +100,7 @@ class OpenDataFolderView(BrowserView):
         organization = self.get_organization_id()
         url = BASE_URL_SEARCH.format(organization)
         try:
-            data = requests.get(url, timeout=10)
-            return bf.data(fromstring(data.content))
+            return etree.parse(url).getroot()
         except:
             return {'error': True}
 
@@ -109,40 +108,48 @@ class OpenDataFolderView(BrowserView):
     def dataset_data(self):
         language = self.get_language()
         data = self.one_dataset_data(self.subpath[0])
-        if data.get('error', False):
-            return {}
-        else:
-            item = data.get('resultado', {}).get('dataset', {})
-            item['title'] = item.get(TITLE_KEY + LANG_SUFFIX.get(language))
-            item['description'] = item.get(DESCRIPTION_KEY + LANG_SUFFIX.get(language))
-            item['source'] = item.get(SOURCE_KEY + LANG_SUFFIX.get(language))
+        for dataset in data.xpath('//dataset'):
+            item = {}
+            for child in dataset.getchildren():
+                if child.tag == TITLE_KEY + LANG_SUFFIX.get(language):
+                    item['title'] = child.text
+                elif child.tag == DESCRIPTION_KEY + LANG_SUFFIX.get(language):
+                    item['description'] = child.text
+                elif child.tag == SOURCE_KEY + LANG_SUFFIX.get(language):
+                    item['source'] = child.text
+                elif child.tag == 'recursos':
+                    resources = []
+                    for resource in child.getchildren():
+                        new_resource = {}
+                        for grandchild in resource.getchildren():
+                            if grandchild.tag == NAME_KEY + LANG_SUFFIX.get(language):
+                                new_resource['name'] = grandchild.text
+                            elif grandchild.tag == DESCRIPTION_KEY + LANG_SUFFIX.get(language):
+                                new_resource['description'] = grandchild.text
+                            else:
+                                new_resource[grandchild.tag] = grandchild.text
 
-            new_resources = []
+                        resources.append(new_resource)
 
-            for resource in item.get('recursos', {}).get('recurso', []):
-                new_resource = resource
-                new_resource['name'] = resource.get(NAME_KEY + LANG_SUFFIX.get(language))
-                new_resource['description'] = resource.get(DESCRIPTION_KEY + LANG_SUFFIX.get(language))
-                new_resources.append(new_resource)
+                    item['resources'] = resources
 
-            item['recursos']['recurso'] = new_resources
+                elif child.tag not in ['etiquetas', 'localizacion']:
+                    item[child.tag] = child.text
+
             return item
-
-
 
     @cache(_render_dataset_id)
     def one_dataset_data(self, dataset):
         url = BASE_URL_DATASET.format(dataset)
         try:
-            data = requests.get(url, timeout=10)
-            return bf.data(fromstring(data.content))
+            return etree.parse(url).getroot()
         except:
             return {'error': True}
 
 
     def datasets(self):
         data = self.organization_data()
-        datasets = data.get('resultado', {}).get('datasets', {}).get('dataset', [])
+        datasets = data.xpath('//dataset')
         for dataset in datasets:
             yield self.decorate_dataset(dataset)
 
@@ -151,7 +158,16 @@ class OpenDataFolderView(BrowserView):
 
     def decorate_dataset(self, item):
         language = self.get_language()
-        item['title'] = item.get(TITLE_KEY + LANG_SUFFIX.get(language))
-        item['description'] = item.get(DESCRIPTION_KEY + LANG_SUFFIX.get(language))
-        item['source'] = item.get(SOURCE_KEY + LANG_SUFFIX.get(language))
-        return item
+        new_item = {}
+        for child in item.getchildren():
+            if child.tag == TITLE_KEY + LANG_SUFFIX.get(language):
+                new_item['title'] = child.text
+            elif child.tag == DESCRIPTION_KEY + LANG_SUFFIX.get(language):
+                new_item['description'] = child.text
+            elif child.tag == SOURCE_KEY + LANG_SUFFIX.get(language):
+                new_item['source'] = child.text
+            elif child.tag not in ['etiquetas', 'recursos']:
+                new_item[child.tag] = child.text
+
+
+        return new_item

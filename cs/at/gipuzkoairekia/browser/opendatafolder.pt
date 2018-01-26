@@ -76,13 +76,9 @@
 
     <tal:data define="data view/dataset_data" condition="data">
 
-      <div class="resources" tal:condition="data/recursos|nothing">
-        <h2 i18n:translate="heading_downloads">
-          Files
-        </h2>
-
-        <ul tal:define="recursos data/recursos">
-          <li tal:repeat="recurso recursos/recurso">
+      <div class="resources" tal:condition="data/resources|nothing">
+        <ul tal:define="recursos data/resources">
+          <li tal:repeat="recurso recursos">
             <a href="" tal:content="recurso/name" tal:attributes="href recurso/url">
               Recurso
             </a>

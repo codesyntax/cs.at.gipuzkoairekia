@@ -7,9 +7,6 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from xml.etree.ElementTree import fromstring
-from xmljson import yahoo as bf
-from xmljson import yahoo as bf
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
 
