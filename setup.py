@@ -51,7 +51,7 @@ setup(
         'archetypes.schemaextender',
         'five.globalrequest',
         'requests',
-        'xmljson',
+        'lxml',
     ],
     extras_require={
         'test': [
