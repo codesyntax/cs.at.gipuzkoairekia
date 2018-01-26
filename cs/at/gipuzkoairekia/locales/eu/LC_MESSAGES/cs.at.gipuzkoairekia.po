@@ -94,7 +94,7 @@ msgstr "Datu Irekien Katalogoa"
 
 #: browser/opendatafolder.pt:53 browser/transparencysection.pt:62
 msgid "Organization:"
-msgstr "Erakundea"
+msgstr "Erakundea:"
 
 #: extender/gipuzkoairekiafolder.py:59
 msgid "Select the language in which the contents will be shown"
@@ -102,7 +102,7 @@ msgstr "Hizkuntza aukeratu"
 
 #: browser/opendatafolder.pt:52 browser/transparencysection.pt:61
 msgid "Subject:"
-msgstr "Gaia"
+msgstr "Gaia:"
 
 #: profiles/default/types/TransparencySection.xml
 msgid "TransparencySection"
