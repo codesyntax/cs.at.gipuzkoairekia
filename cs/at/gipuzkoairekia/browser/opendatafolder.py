@@ -2,6 +2,7 @@ from Acquisition import aq_inner
 from Acquisition import aq_parent
 from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
 from lxml import etree
+from plone.batching import Batch
 from plone.memoize.ram import cache
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
@@ -150,8 +151,10 @@ class OpenDataFolderView(BrowserView):
     def datasets(self):
         data = self.organization_data()
         datasets = data.xpath('//dataset')
-        for dataset in datasets:
-            yield self.decorate_dataset(dataset)
+        datasets = [self.decorate_dataset(dataset) for dataset in datasets]
+        b_size = self.request.get('b_size', 20)
+        b_start = self.request.get('b_start', 0)
+        return Batch(datasets, b_size, b_start)
 
     def get_language(self):
         return self.context.Language()

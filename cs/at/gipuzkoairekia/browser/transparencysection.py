@@ -3,6 +3,7 @@ from Acquisition import aq_parent
 from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
 from itertools import izip
 from lxml import etree
+from plone.batching import Batch
 from plone.memoize.ram import cache
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFPlone.utils import safe_unicode
@@ -141,9 +142,11 @@ class TransparencySectionView(BrowserView):
 
 
     def datasets(self):
-        data = self.organization_data()
-        for dataset in data:
-            yield self.decorate_dataset(dataset)
+        data = [self.decorate_dataset(dataset) for dataset in self.organization_data()]
+        b_size = self.request.get('b_size', 20)
+        b_start = self.request.get('b_start', 0)
+        return Batch(data, b_size, b_start)
+
 
     def get_language(self):
         return self.context.Language()

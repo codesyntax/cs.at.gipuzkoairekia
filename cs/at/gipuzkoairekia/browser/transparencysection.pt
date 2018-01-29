@@ -95,27 +95,33 @@
 
   <div id="data-list" tal:condition="not:view/is_subpath">
 
-    <div class="data-item" tal:repeat="dataset view/datasets">
+    <tal:batch define="batch view/datasets">
 
-      <h2>
-        <a href="" tal:attributes="href string:${request/ACTUAL_URL}/view/${dataset/articleId}"
-          tal:content="dataset/newtitle">
-          Eibarko Udalean jasotako fakturek
-        </a>
-      </h2>
+      <div class="data-item" tal:repeat="dataset batch">
 
-      <p class="publication-date moment-date"
-        tal:attributes="data-date dataset/modified"
-        tal:content="dataset/modified">
-        2017/07/07
-      </p>
+        <h2>
+          <a href="" tal:attributes="href string:${request/ACTUAL_URL}/view/${dataset/articleId}"
+            tal:content="dataset/newtitle">
+            Eibarko Udalean jasotako fakturek
+          </a>
+        </h2>
 
-      <p class="dataset-description"
-        tal:content="dataset/description">
-        Here goes the description
-      </p>
+        <p class="publication-date moment-date"
+          tal:attributes="data-date dataset/modified"
+          tal:content="dataset/modified">
+          2017/07/07
+        </p>
 
-    </div>
+        <p class="dataset-description"
+          tal:content="dataset/description">
+          Here goes the description
+        </p>
+
+      </div>
+
+      <metal:batch use-macro="here/batch_macros/macros/navigation" />
+
+    </tal:batch>
   </div>
 
 
