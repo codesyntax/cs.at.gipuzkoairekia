@@ -46,12 +46,14 @@
 <metal:description fill-slot="content-description">
 
   <div id="info-table" tal:condition="view/is_subpath">
-    <dl tal:define="data view/dataset_data">
-      <dt i18n:translate="">Modification date:</dt> <dd class="moment-date" tal:attributes="data-date data/fechaModificacion" tal:content="data/fechaModificacion">2018-01-03</dd>
-      <dt i18n:translate="">Creation date:</dt> <dd class="moment-date" tal:attributes="data-date data/fechaCreacion" tal:content="data/fechaCreacion">2016-01-04</dd>
-      <dt i18n:translate="">Subject:</dt><dd tal:content="python:view.get_category(data.get('categoria', ''))">Ekonomia, Finantzak, Aurrekontuak eta Estatistikak</dd>
-      <dt i18n:translate="">Organization:</dt><dd>Eibarko Udala</dd>
-    </dl>
+    <tal:item define="data view/dataset_data">
+      <dl>
+        <dt i18n:translate="">Modification date:</dt> <dd class="moment-date" tal:attributes="data-date data/fechaModificacion" tal:content="data/fechaModificacion">2018-01-03</dd>
+        <dt i18n:translate="">Creation date:</dt> <dd class="moment-date" tal:attributes="data-date data/fechaCreacion" tal:content="data/fechaCreacion">2016-01-04</dd>
+        <dt i18n:translate="">Subject:</dt><dd tal:content="python:view.get_category(data.get('categoria', ''))">Ekonomia, Finantzak, Aurrekontuak eta Estatistikak</dd>
+        <dt i18n:translate="">Organization:</dt><dd>Eibarko Udala</dd>
+      </dl>
+    </tal:item>
   </div>
 
 
