@@ -201,7 +201,7 @@ class TransparencySectionView(BrowserView):
             for value in values:
                 lang_value = value.get('language-id', None)
                 if lang_value == LANG_VALUE.get(language) and value.text:
-                    response.append(value.text)
+                    response.append(safe_unicode(value.text).encode('utf-8'))
 
             html_response = '<ul>'
             for first, second in pairwise(response):
