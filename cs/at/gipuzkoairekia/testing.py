@@ -10,10 +10,10 @@ from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.testing import z2
 
-import cs.at.gipuzkoairekia  # noqa
+import cs.at.gipuzkoairekia
 
 
-class CsAtGipuzkoairekiaLayer(PloneSandboxLayer):
+class CsAtGipuzkoaIrekiaLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
 
@@ -24,9 +24,10 @@ class CsAtGipuzkoairekiaLayer(PloneSandboxLayer):
 
         z2.installProduct(app, 'Products.Archetypes')
         z2.installProduct(app, 'Products.ATContentTypes')
+        self.loadZCML(package=cs.at.gipuzkoairekia)
 
     def setUpPloneSite(self, portal):
-
+        applyProfile(portal, 'cs.at.gipuzkoairekia:default')
         portal.acl_users.userFolderAddUser(
             SITE_OWNER_NAME, SITE_OWNER_PASSWORD, ['Manager'], [])
 
@@ -40,16 +41,16 @@ class CsAtGipuzkoairekiaLayer(PloneSandboxLayer):
             applyProfile(portal, 'plone.app.collection:default')
 
 
-CS_AT_GIPUZKOAIREKIA_FIXTURE = CsAtGipuzkoairekiaLayer()
+CS_AT_GIPUZKOAIREKIA_FIXTURE = CsAtGipuzkoaIrekiaLayer()
 
 CS_AT_GIPUZKOAIREKIA_INTEGRATION_TESTING = IntegrationTesting(
     bases=(CS_AT_GIPUZKOAIREKIA_FIXTURE,),
-    name='CsAtGipuzkoairekiaLayer:IntegrationTesting'
+    name='CsAtGipuzkoaIrekiaLayer:IntegrationTesting'
 )
 
 CS_AT_GIPUZKOAIREKIA_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(CS_AT_GIPUZKOAIREKIA_FIXTURE, ),
-    name='CsAtGipuzkoairekiaLayer:FunctionalTesting'
+    name='CsAtGipuzkoaIrekiaLayer:FunctionalTesting'
 )
 
 CS_AT_GIPUZKOAIREKIA_ACCEPTANCE_TESTING = FunctionalTesting(
@@ -58,5 +59,5 @@ CS_AT_GIPUZKOAIREKIA_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
-    name='{{{ package.browserlayer }}}:AcceptanceTesting'
+    name='CsAtGipuzkoaIrekiaLayer:AcceptanceTesting'
 )
