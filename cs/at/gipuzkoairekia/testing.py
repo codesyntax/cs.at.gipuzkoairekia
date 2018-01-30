@@ -10,7 +10,8 @@ from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.testing import z2
 
-import cs.at.gipuzkoairekia
+import cs.at.gipuzkoairekia  # noqa
+
 
 class CsAtGipuzkoairekiaLayer(PloneSandboxLayer):
 
@@ -39,15 +40,12 @@ class CsAtGipuzkoairekiaLayer(PloneSandboxLayer):
             applyProfile(portal, 'plone.app.collection:default')
 
 
-
 CS_AT_GIPUZKOAIREKIA_FIXTURE = CsAtGipuzkoairekiaLayer()
-
 
 CS_AT_GIPUZKOAIREKIA_INTEGRATION_TESTING = IntegrationTesting(
     bases=(CS_AT_GIPUZKOAIREKIA_FIXTURE,),
     name='CsAtGipuzkoairekiaLayer:IntegrationTesting'
 )
-
 
 CS_AT_GIPUZKOAIREKIA_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(CS_AT_GIPUZKOAIREKIA_FIXTURE, ),

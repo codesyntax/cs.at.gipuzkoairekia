@@ -1,24 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Definition of the OpenDataFolder content type
-"""
+from cs.at.gipuzkoairekia.config import PROJECTNAME
+from cs.at.gipuzkoairekia.interfaces import IOpenDataFolder
+from Products.ATContentTypes.content import base
+from Products.ATContentTypes.content import schemata
+from zope.interface import implementer
 
-from zope.interface import implements
 
 try:
     from Products.LinguaPlone import atapi
 except ImportError:
     from Products.Archetypes import atapi
 
-from Products.ATContentTypes.content import base
-from Products.ATContentTypes.content import schemata
-from plone.app.blob.field import ImageField, ImageWidget
-# -*- Message Factory Imported Here -*-
-from cs.at.gipuzkoairekia import _
-from cs.at.gipuzkoairekia.interfaces import IOpenDataFolder
-from cs.at.gipuzkoairekia.config import PROJECTNAME
 
 OpenDataFolderSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
-
     # -*- Your Archetypes field definitions here ... -*-
 
 ))
@@ -32,16 +26,17 @@ OpenDataFolderSchema['description'].storage = atapi.AnnotationStorage()
 schemata.finalizeATCTSchema(OpenDataFolderSchema, moveDiscussion=False)
 
 
+@implementer(IOpenDataFolder)
 class OpenDataFolder(base.ATCTContent):
     """Content-type for sections"""
-    implements(IOpenDataFolder)
 
-    meta_type = "OpenDataFolder"
+    meta_type = 'OpenDataFolder'
     schema = OpenDataFolderSchema
 
     title = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
+
 
 atapi.registerType(OpenDataFolder, PROJECTNAME)

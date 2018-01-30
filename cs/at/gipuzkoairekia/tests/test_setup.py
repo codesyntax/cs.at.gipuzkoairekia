@@ -55,6 +55,4 @@ class TestUninstall(unittest.TestCase):
         from cs.at.gipuzkoairekia.interfaces import \
             ICsAtGipuzkoaIrekia
         from plone.browserlayer import utils
-        self.assertNotIn(
-           ICsAtGipuzkoaIrekia,
-           utils.registered_layers())
+        self.assertNotIn(ICsAtGipuzkoaIrekia, utils.registered_layers())
