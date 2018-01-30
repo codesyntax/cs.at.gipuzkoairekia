@@ -1,35 +1,33 @@
-"""Definition of the TransparencySection content type
-"""
+# -*- coding: utf-8 -*-
+from cs.at.gipuzkoairekia import _
+from cs.at.gipuzkoairekia.config import PROJECTNAME
+from cs.at.gipuzkoairekia.interfaces import ITransparencySection
+from plone.app.blob.field import ImageField
+from plone.app.blob.field import ImageWidget
+from Products.ATContentTypes.content import base
+from Products.ATContentTypes.content import schemata
+from zope.interface import implementer
 
-from zope.interface import implements
 
 try:
     from Products.LinguaPlone import atapi
 except ImportError:
     from Products.Archetypes import atapi
 
-from Products.ATContentTypes.content import base
-from Products.ATContentTypes.content import schemata
-from plone.app.blob.field import ImageField, ImageWidget
-# -*- Message Factory Imported Here -*-
-from cs.at.gipuzkoairekia import _
-from cs.at.gipuzkoairekia.interfaces import ITransparencySection
-from cs.at.gipuzkoairekia.config import PROJECTNAME
-
-TransparencySectionSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+TransparencySectionSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema(( # noqa
 
     # -*- Your Archetypes field definitions here ... -*-
     ImageField(
         'image',
         required=False,
         sizes={
-            'large'   : (768, 768),
-            'preview' : (400, 400),
-            'mini'    : (200, 200),
-            'thumb'   : (128, 128),
-            'tile'    :  (64, 64),
-            'icon'    :  (32, 32),
-            'listing' :  (16, 16),
+            'large': (768, 768),
+            'preview': (400, 400),
+            'mini': (200, 200),
+            'thumb': (128, 128),
+            'tile': (64, 64),
+            'icon': (32, 32),
+            'listing': (16, 16),
         },
         widget=ImageWidget(
             label=_(u'Logo'),
@@ -43,7 +41,8 @@ TransparencySectionSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         required=True,
         widget=atapi.StringWidget(
             label=_(u'Category id'),
-            description=_(u'Enter the transparency portal category id to be linked here'),
+            description=_(u'Enter the transparency portal '
+                          u'category id to be linked here'),
         )
     )
 
@@ -58,11 +57,11 @@ TransparencySectionSchema['description'].storage = atapi.AnnotationStorage()
 schemata.finalizeATCTSchema(TransparencySectionSchema, moveDiscussion=False)
 
 
+@implementer(ITransparencySection)
 class TransparencySection(base.ATCTContent):
     """Content-type for sections"""
-    implements(ITransparencySection)
 
-    meta_type = "TransparencySection"
+    meta_type = 'TransparencySection'
     schema = TransparencySectionSchema
 
     title = atapi.ATFieldProperty('title')
@@ -71,6 +70,9 @@ class TransparencySection(base.ATCTContent):
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
 
     def image_url(self):
-        return str(self.restrictedTraverse('@@images').scale('image', scale='mini'))
+        return str(self.restrictedTraverse('@@images').scale(
+            'image', scale='mini')
+        )
+
 
 atapi.registerType(TransparencySection, PROJECTNAME)

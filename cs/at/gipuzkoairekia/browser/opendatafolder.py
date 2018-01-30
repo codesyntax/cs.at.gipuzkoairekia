@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
@@ -11,13 +12,12 @@ from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
 
 import time
-import requests
 
 
-BASE_URL_SEARCH = 'http://api.gipuzkoairekia.eus/dataset/buscar?org={0}&numRes=9999'
+BASE_URL_SEARCH = 'http://api.gipuzkoairekia.eus/dataset/buscar?org={0}&numRes=9999' # noqa
 BASE_URL_DATASET = 'http://api.gipuzkoairekia.eus/dataset/{0}'
 
-CATEGORY_SEARCH_URL = 'http://api.gipuzkoairekia.eus//categoria/lista'
+CATEGORY_SEARCH_URL = 'http://api.gipuzkoairekia.eus/categoria/lista'
 
 LANG_SUFFIX = {
     'es': '',
@@ -31,9 +31,9 @@ SOURCE_KEY = 'fuente'
 NAME_KEY = 'nombre'
 
 
-
 def _render_dataset_id(method, self, datasetid):
     return (datasetid, time.time() // 3600)
+
 
 def _render_organization_id(method, self):
     return (self.get_organization_id(), time.time() // 3600)
@@ -57,7 +57,6 @@ class OpenDataFolderView(BrowserView):
     def is_subpath(self):
         return hasattr(self, 'subpath') and bool(self.subpath)
 
-
     def subpath_title(self):
         data = self.dataset_data()
         return data.get('title', '')
@@ -68,7 +67,7 @@ class OpenDataFolderView(BrowserView):
 
     def get_organization_id(self):
         context = aq_inner(self.context)
-        while not (IGipuzkoaIrekiaFolder.providedBy(context) or IPloneSiteRoot.providedBy(context)):
+        while not (IGipuzkoaIrekiaFolder.providedBy(context) or IPloneSiteRoot.providedBy(context)): # noqa
             context = aq_parent(context)
 
         if IGipuzkoaIrekiaFolder.providedBy(context):
@@ -80,7 +79,10 @@ class OpenDataFolderView(BrowserView):
     def category_data(self):
         try:
             return etree.parse(CATEGORY_SEARCH_URL).getroot()
-        except:
+        except Exception, e:
+            from logging import getLogger
+            log = getLogger(__name__)
+            log.exception(e)
             return {'error': True}
 
     def get_category(self, id):
@@ -90,11 +92,10 @@ class OpenDataFolderView(BrowserView):
         new_data = {}
         for item in items:
             category_id = item.xpath('id')[0].text
-            category_title = item.xpath('{}'.format(TITLE_KEY + LANG_SUFFIX.get(language)))[0].text
+            category_title = item.xpath('{0}'.format(TITLE_KEY + LANG_SUFFIX.get(language)))[0].text # noqa
             new_data[category_id] = category_title
 
         return new_data.get(id, '')
-
 
     @cache(_render_organization_id)
     def organization_data(self):
@@ -102,9 +103,11 @@ class OpenDataFolderView(BrowserView):
         url = BASE_URL_SEARCH.format(organization)
         try:
             return etree.parse(url).getroot()
-        except:
+        except Exception, e:
+            from logging import getLogger
+            log = getLogger(__name__)
+            log.exception(e)
             return {'error': True}
-
 
     def dataset_data(self):
         language = self.get_language()
@@ -123,9 +126,9 @@ class OpenDataFolderView(BrowserView):
                     for resource in child.getchildren():
                         new_resource = {}
                         for grandchild in resource.getchildren():
-                            if grandchild.tag == NAME_KEY + LANG_SUFFIX.get(language):
+                            if grandchild.tag == NAME_KEY + LANG_SUFFIX.get(language): # noqa
                                 new_resource['name'] = grandchild.text
-                            elif grandchild.tag == DESCRIPTION_KEY + LANG_SUFFIX.get(language):
+                            elif grandchild.tag == DESCRIPTION_KEY + LANG_SUFFIX.get(language): # noqa
                                 new_resource['description'] = grandchild.text
                             else:
                                 new_resource[grandchild.tag] = grandchild.text
@@ -144,9 +147,11 @@ class OpenDataFolderView(BrowserView):
         url = BASE_URL_DATASET.format(dataset)
         try:
             return etree.parse(url).getroot()
-        except:
+        except Exception, e:
+            from logging import getLogger
+            log = getLogger(__name__)
+            log.exception(e)
             return {'error': True}
-
 
     def datasets(self):
         data = self.organization_data()
@@ -171,6 +176,5 @@ class OpenDataFolderView(BrowserView):
                 new_item['source'] = child.text
             elif child.tag not in ['etiquetas', 'recursos']:
                 new_item[child.tag] = child.text
-
 
         return new_item

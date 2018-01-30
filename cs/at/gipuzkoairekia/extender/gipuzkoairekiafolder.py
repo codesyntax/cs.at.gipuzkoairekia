@@ -1,13 +1,13 @@
+# -*- coding: utf-8 -*-
 from archetypes.schemaextender.field import ExtensionField
 from archetypes.schemaextender.interfaces import ISchemaExtender
-from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
 from cs.at.gipuzkoairekia import _
-from zope.component import adapts
-from zope.component import adapter
-from zope.interface import implements
-from zope.interface import implementer
+from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
 from Products.Archetypes.interfaces import IFieldDefaultProvider
+from zope.component import adapter
 from zope.globalrequest import getRequest
+from zope.interface import implementer
+
 
 try:
     from Products.LinguaPlone import atapi
@@ -19,7 +19,6 @@ class MyStringField(ExtensionField, atapi.StringField):
     """A trivial field."""
 
 
-
 @implementer(IFieldDefaultProvider)
 @adapter(IGipuzkoaIrekiaFolder)
 def default_language(context):
@@ -27,9 +26,9 @@ def default_language(context):
     return request.get('LANGUAGE', 'eu')
 
 
+@implementer(ISchemaExtender)
+@adapter(IGipuzkoaIrekiaFolder)
 class GipuzkoaIrekiaFolderExtender(object):
-    adapts(IGipuzkoaIrekiaFolder)
-    implements(ISchemaExtender)
 
     fields = [
         MyStringField(
@@ -56,7 +55,8 @@ class GipuzkoaIrekiaFolderExtender(object):
             widget=atapi.SelectionWidget(
                 type='radio',
                 label=_(u'Language'),
-                description=_(u'Select the language in which the contents will be shown'),
+                description=_(u'Select the language in which the '
+                              u'contents will be shown'),
             )
         ),
 
