@@ -1,3 +1,11 @@
+.. image:: https://secure.travis-ci.org/codesyntax/cs.at.gipuzkoairekia.png?branch=master
+ :target: http://travis-ci.org/codesyntax/cs.at.gipuzkoairekia
+
+.. image:: https://coveralls.io/repos/github/codesyntax/cs.at.gipuzkoairekia/badge.svg?branch=master
+ :target: https://coveralls.io/github/codesyntax/cs.at.gipuzkoairekia?branch=master
+
+
+
 Introduction
 ============
 
