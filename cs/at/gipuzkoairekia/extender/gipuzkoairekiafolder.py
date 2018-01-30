@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from archetypes.schemaextender.field import ExtensionField
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder

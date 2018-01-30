@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
 from cs.at.gipuzkoairekia.testing import CS_AT_GIPUZKOAIREKIA_ACCEPTANCE_TESTING  # noqa
