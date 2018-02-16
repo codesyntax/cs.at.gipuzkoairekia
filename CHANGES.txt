@@ -4,5 +4,132 @@ Changelog
 1.0 (UNRELEASED)
 ----------------
 
-- Initial version
+- fix [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- Revert "fix attributename" [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+-  [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- This reverts commit 702017cc5dc440461c7e54331c4122a30bfded78. [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- fix attributename [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- add coverage config file [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- fix coveralls [csmant <csmant@anboto>]
+
+- add badges [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- Merge pull request #1 from codesyntax/fix-travis [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+-  [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- Fix travis and testing [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- fix ZCML loading [csmant <csmant@anboto>]
+
+- fix name [csmant <csmant@anboto>]
+
+- flake8 [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- add setup.cfg [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- remove setup.cfg [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- rename [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- add file encoding header [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- fix test setup [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- fix travis [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- unicode [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- add batching to listings [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- change markup [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- force to render as string [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- rework [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- translatiosn [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- change dependnecies [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- rework API calls to use lxml [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- missing row [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- minor fixes [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- fix condition [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- show a header with extra info [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- show a header with extra info [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- translations [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- show only the date, no the time [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- set default view method to be view [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- fix [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- use simple index [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- add file [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- docs [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- remove [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- docs [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- docs [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- rename [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- remove language independency [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- use the new title [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- use a scaled version [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- dates are in miliseconds since epoch [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- show contents per line [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- save parsed title value into a new variable [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- transparencey section list view [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- show dates in opendata section using moment [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- use momentjs to show the dates [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- properly cache items with category_id [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- add a view to check all the available sections [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- show the items from Transparency portal [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- use view as default view [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- requirements2 [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- basic view to get data from the API [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- content-type [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- docs [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- remove portlets [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- create namespace [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- initial import [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
   [erral]
