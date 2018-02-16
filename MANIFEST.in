@@ -1,2 +1,12 @@
-recursive-include cs *
-global-exclude *pyc
+include *.in
+include *.txt
+include LICENSE
+recursive-include cs *.gitkeep
+recursive-include cs *.js
+recursive-include cs *.po
+recursive-include cs *.pt
+recursive-include cs *.sh
+recursive-include cs *.xml
+recursive-include cs *.zcml
+recursive-include docs *.GPL
+recursive-include docs *.txt
