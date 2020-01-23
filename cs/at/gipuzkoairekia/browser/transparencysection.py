@@ -161,7 +161,7 @@ class TransparencySectionView(BrowserView):
         )
         item['text'] = self.parse_content(item.get('content'), language)
         item['modified'] = self.convert_date(item.get('modifiedDate'))
-        item['created'] = self.convert_date(item.get('createDate'))
+        item['created'] = self.convert_date(item.get('displayDate'))
         return item
 
     def parse_title(self, content, language):
