@@ -4,7 +4,8 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- fix when the category services returns an errors [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
 
 
 1.0 (2018-02-16)
