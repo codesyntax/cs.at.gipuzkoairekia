@@ -4,7 +4,10 @@ Changelog
 1.1 (unreleased)
 ----------------
 
+- Update changelog [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
 - fix when the category services returns an errors [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
 
 
 
