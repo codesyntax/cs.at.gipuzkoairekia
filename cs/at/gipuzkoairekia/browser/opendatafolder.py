@@ -86,16 +86,21 @@ class OpenDataFolderView(BrowserView):
             return {'error': True}
 
     def get_category(self, id):
+
         language = self.get_language()
         categories = self.category_data()
-        items = categories.xpath('//categoria')
-        new_data = {}
-        for item in items:
-            category_id = item.xpath('id')[0].text
-            category_title = item.xpath('{0}'.format(TITLE_KEY + LANG_SUFFIX.get(language)))[0].text # noqa
-            new_data[category_id] = category_title
+        try:
+            items = categories.xpath('//categoria')
+            new_data = {}
+            for item in items:
+                category_id = item.xpath('id')[0].text
+                category_title = item.xpath('{0}'.format(TITLE_KEY + LANG_SUFFIX.get(language)))[0].text # noqa
+                new_data[category_id] = category_title
 
-        return new_data.get(id, '')
+            return new_data.get(id, '')
+        except AttributeError:
+            return ''
+
 
     @cache(_render_organization_id)
     def organization_data(self):
@@ -155,11 +160,14 @@ class OpenDataFolderView(BrowserView):
 
     def datasets(self):
         data = self.organization_data()
-        datasets = data.xpath('//dataset')
-        datasets = [self.decorate_dataset(dataset) for dataset in datasets]
-        b_size = self.request.get('b_size', 20)
-        b_start = self.request.get('b_start', 0)
-        return Batch(datasets, b_size, b_start)
+        try:
+            datasets = data.xpath('//dataset')
+            datasets = [self.decorate_dataset(dataset) for dataset in datasets]
+            b_size = self.request.get('b_size', 20)
+            b_start = self.request.get('b_start', 0)
+            return Batch(datasets, b_size, b_start)
+        except AttributeError:
+            return []
 
     def get_language(self):
         return self.context.Language()
