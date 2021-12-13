@@ -184,6 +184,8 @@ class TransparencySectionView(BrowserView):
         try:
             root = etree.fromstring(safe_unicode(content).encode('utf-8'))
             values = root.xpath("/root/dynamic-element[@name='descripcion-transparencia']/dynamic-content")  # noqa
+            if not values:
+                values = root.xpath("/root/dynamic-element[@name='descripciontransparencia']/dynamic-content")  # noqa
             for value in values:
                 lang_value = value.get('language-id', None)
                 if lang_value == LANG_VALUE.get(language):
@@ -207,6 +209,8 @@ class TransparencySectionView(BrowserView):
             html_response = ''
             root = etree.fromstring(safe_unicode(content).encode('utf-8'))
             values = root.xpath("/root/dynamic-element[@name='descripcion-dato-transparencia']//dynamic-content")  # noqa
+            if not values:
+                values = root.xpath("/root/dynamic-element[@name='descripciondatotransparencia']//dynamic-content")  # noqa
             for value in values:
                 lang_value = value.get('language-id', None)
                 if lang_value == LANG_VALUE.get(language) and value.text:
