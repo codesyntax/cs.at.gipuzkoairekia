@@ -4,7 +4,14 @@ Changelog
 1.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- run black [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- adapt for new xml tags in content [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+-  [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- [ci skip] [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
 
 
 1.0.2 (2021-02-23)
