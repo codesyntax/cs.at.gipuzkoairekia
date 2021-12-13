@@ -5,7 +5,7 @@ from Products.CMFCore import utils
 from zope.i18nmessageid import MessageFactory
 
 
-_ = MessageFactory('cs.at.gipuzkoairekia')
+_ = MessageFactory("cs.at.gipuzkoairekia")
 
 
 def initialize(context):
@@ -26,8 +26,8 @@ def initialize(context):
     # once.
 
     content_types, constructors, ftis = atapi.process_types(
-        atapi.listTypes(config.PROJECTNAME),
-        config.PROJECTNAME)
+        atapi.listTypes(config.PROJECTNAME), config.PROJECTNAME
+    )
 
     # Now initialize all these content types. The initialization process takes
     # care of registering low-level Zope 2 factories, including the relevant
@@ -38,8 +38,8 @@ def initialize(context):
 
     for atype, constructor in zip(content_types, constructors):
         utils.ContentInit(
-            '{0}: {1}'.format(config.PROJECTNAME, atype.portal_type),
-            content_types=(atype, ),
+            "{0}: {1}".format(config.PROJECTNAME, atype.portal_type),
+            content_types=(atype,),
             permission=config.ADD_PERMISSIONS[atype.portal_type],
             extra_constructors=(constructor,),
         ).initialize(context)

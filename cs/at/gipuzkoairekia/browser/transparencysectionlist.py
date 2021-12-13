@@ -4,18 +4,17 @@ from Products.Five.browser import BrowserView
 import requests
 
 
-BASE_URL_SEARCH = 'http://www.gipuzkoairekia.eus/api/jsonws/DOGGipuzkoaIrekiaApi-portlet.categoria/get-temas-transparencia'  # noqa
+BASE_URL_SEARCH = "http://www.gipuzkoairekia.eus/api/jsonws/DOGGipuzkoaIrekiaApi-portlet.categoria/get-temas-transparencia"  # noqa
 
 LANG_SUFFIX = {
-    'es': '',
-    'eu': 'EU',
+    "es": "",
+    "eu": "EU",
 }
 
-TITLE_KEY = 'titulo'
+TITLE_KEY = "titulo"
 
 
 class TransparencySectionListView(BrowserView):
-
     def get_language(self):
         return self.context.Language()
 
@@ -31,11 +30,12 @@ class TransparencySectionListView(BrowserView):
             return data.json()
         except Exception, e:
             from logging import getLogger
+
             log = getLogger(__name__)
             log.exception(e)
             return []
 
     def decorate_item(self, item):
         language = self.get_language()
-        item['title'] = item.get(TITLE_KEY + LANG_SUFFIX.get(language))
+        item["title"] = item.get(TITLE_KEY + LANG_SUFFIX.get(language))
         return item

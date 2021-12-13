@@ -23,7 +23,7 @@ class MyStringField(ExtensionField, atapi.StringField):
 @adapter(IGipuzkoaIrekiaFolder)
 def default_language(context):
     request = getRequest()
-    return request.get('LANGUAGE', 'eu')
+    return request.get("LANGUAGE", "eu")
 
 
 @implementer(ISchemaExtender)
@@ -32,36 +32,36 @@ class GipuzkoaIrekiaFolderExtender(object):
 
     fields = [
         MyStringField(
-            'institution_code',
+            "institution_code",
             widget=atapi.StringWidget(
-                label=_(u'Institution code (Open-data portal)'),
-                description=_(u'Enter here the code of the institution'),
-            )
+                label=_(u"Institution code (Open-data portal)"),
+                description=_(u"Enter here the code of the institution"),
+            ),
         ),
         MyStringField(
-            'group_id',
+            "group_id",
             widget=atapi.StringWidget(
-                label=_(u'Institution code (Transpareceny portal)'),
-                description=_(u'Enter here the code of the institution'),
-            )
+                label=_(u"Institution code (Transpareceny portal)"),
+                description=_(u"Enter here the code of the institution"),
+            ),
         ),
         MyStringField(
-            'gipuzkoairekia_language',
-            vocabulary=atapi.DisplayList([
-                ('eu', _(u'Euskara')),
-                ('es', _(u'Espanol')),
-                ('en', _(u'English')),
-            ]),
+            "gipuzkoairekia_language",
+            vocabulary=atapi.DisplayList(
+                [
+                    ("eu", _(u"Euskara")),
+                    ("es", _(u"Espanol")),
+                    ("en", _(u"English")),
+                ]
+            ),
             widget=atapi.SelectionWidget(
-                type='radio',
-                label=_(u'Language'),
-                description=_(u'Select the language in which the '
-                              u'contents will be shown'),
-            )
+                type="radio",
+                label=_(u"Language"),
+                description=_(
+                    u"Select the language in which the " u"contents will be shown"
+                ),
+            ),
         ),
-
-
-
     ]
 
     def __init__(self, context):

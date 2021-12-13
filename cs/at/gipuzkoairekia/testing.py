@@ -22,42 +22,41 @@ class CsAtGipuzkoaIrekiaLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
 
-        z2.installProduct(app, 'Products.Archetypes')
-        z2.installProduct(app, 'Products.ATContentTypes')
+        z2.installProduct(app, "Products.Archetypes")
+        z2.installProduct(app, "Products.ATContentTypes")
         self.loadZCML(package=cs.at.gipuzkoairekia)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'cs.at.gipuzkoairekia:default')
+        applyProfile(portal, "cs.at.gipuzkoairekia:default")
         portal.acl_users.userFolderAddUser(
-            SITE_OWNER_NAME, SITE_OWNER_PASSWORD, ['Manager'], [])
+            SITE_OWNER_NAME, SITE_OWNER_PASSWORD, ["Manager"], []
+        )
 
         login(portal, SITE_OWNER_NAME)
 
-        if portal.portal_setup.profileExists(
-                'Products.ATContentTypes:default'):
-            applyProfile(portal, 'Products.ATContentTypes:default')
-        if portal.portal_setup.profileExists(
-                'plone.app.collection:default'):
-            applyProfile(portal, 'plone.app.collection:default')
+        if portal.portal_setup.profileExists("Products.ATContentTypes:default"):
+            applyProfile(portal, "Products.ATContentTypes:default")
+        if portal.portal_setup.profileExists("plone.app.collection:default"):
+            applyProfile(portal, "plone.app.collection:default")
 
 
 CS_AT_GIPUZKOAIREKIA_FIXTURE = CsAtGipuzkoaIrekiaLayer()
 
 CS_AT_GIPUZKOAIREKIA_INTEGRATION_TESTING = IntegrationTesting(
     bases=(CS_AT_GIPUZKOAIREKIA_FIXTURE,),
-    name='CsAtGipuzkoaIrekiaLayer:IntegrationTesting'
+    name="CsAtGipuzkoaIrekiaLayer:IntegrationTesting",
 )
 
 CS_AT_GIPUZKOAIREKIA_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(CS_AT_GIPUZKOAIREKIA_FIXTURE, ),
-    name='CsAtGipuzkoaIrekiaLayer:FunctionalTesting'
+    bases=(CS_AT_GIPUZKOAIREKIA_FIXTURE,),
+    name="CsAtGipuzkoaIrekiaLayer:FunctionalTesting",
 )
 
 CS_AT_GIPUZKOAIREKIA_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         CS_AT_GIPUZKOAIREKIA_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
+        z2.ZSERVER_FIXTURE,
     ),
-    name='CsAtGipuzkoaIrekiaLayer:AcceptanceTesting'
+    name="CsAtGipuzkoaIrekiaLayer:AcceptanceTesting",
 )
