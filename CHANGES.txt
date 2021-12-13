@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.3 (unreleased)
+1.0.3 (2021-12-13)
 ------------------
 
 - run black [Mikel Larreategi <mlarreategi@codesyntax.com>]
