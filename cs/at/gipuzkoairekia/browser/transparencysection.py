@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pdb
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from cs.at.gipuzkoairekia.interfaces import IGipuzkoaIrekiaFolder
@@ -127,7 +128,9 @@ class TransparencySectionView(BrowserView):
         dataset["description"] = dataset.get(
             DESCRIPTION_KEY + LANG_SUFFIX.get(language)
         )  # noqa
-        dataset["source"] = dataset.get(SOURCE_KEY + LANG_SUFFIX.get(language))  # noqa
+        dataset["source"] = dataset.get(
+            SOURCE_KEY + LANG_SUFFIX.get(language)
+        )  # noqa
         new_resources = []
 
         for resource in dataset.get("recursos", {}).get("recurso", []):
@@ -161,7 +164,8 @@ class TransparencySectionView(BrowserView):
 
     def datasets(self):
         data = [
-            self.decorate_dataset(dataset) for dataset in self.organization_data()
+            self.decorate_dataset(dataset)
+            for dataset in self.organization_data()
         ]  # noqa
         b_size = self.request.get("b_size", 20)
         b_start = self.request.get("b_start", 0)
@@ -172,8 +176,12 @@ class TransparencySectionView(BrowserView):
 
     def decorate_dataset(self, item):
         language = self.get_language()
-        item["newtitle"] = self.parse_title(item.get("title"), language)
-        item["description"] = self.parse_description(item.get("content"), language)
+        item["newtitle"] = self.parse_title(
+            item.get("titleMapAsXML"), language
+        )
+        item["description"] = self.parse_description(
+            item.get("content"), language
+        )
         item["text"] = self.parse_content(item.get("content"), language)
         item["modified"] = self.convert_date(item.get("modifiedDate"))
         item["created"] = self.convert_date(item.get("displayDate"))
